@@ -130,3 +130,9 @@ dmypy.json
 
 #IDE
 .vscode
+
+#katalog z opiniami
+opinions/
+
+#katalog z wykresami
+plots/
