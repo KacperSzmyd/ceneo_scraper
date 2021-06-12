@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup
-import glob
 import requests
 import json
 
@@ -57,6 +56,3 @@ with open("opinions/{}.json".format(prduct_id), "w", encoding="UTF-8") as jf:
     json.dump(all_opinions, jf, indent=4, ensure_ascii=False)
 
 print(json.dumps(all_opinions, indent=4, ensure_ascii=False))
-
-fileset = [file for file in glob.glob("opinions/" + "**/*.json", recursive=True)]
-print(fileset)

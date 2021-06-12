@@ -24,12 +24,12 @@ average_score = opinions.stars.mean().round(2)
 
 stars = opinions.stars.value_counts().reindex(np.arange(0,5.5,0.5), fill_value = 0)
 
-"""stars.plot.bar(color = "red")
+stars.plot.bar(color = "red")
 plt.title("Gwiazdki")
 plt.xlabel("Liczba gwiazdek")
 plt.ylabel("Liczba opinii")
 plt.savefig("plots/{}.png".format(prduct_id))
-plt.close()"""
+plt.close()
 
 recomm = opinions.recomm.value_counts(dropna = False).sort_index()
 recomm.plot.pie(colors = ["crimson", "blue", "forestgreen"])
