@@ -28,8 +28,8 @@ features = {
 
 
 
-prduct_id = input("Podaj kod produktu: ")
-next_page = "https://www.ceneo.pl/{}#tab=reviews".format(prduct_id)
+product_id = input("Podaj kod produktu: ")
+next_page = "https://www.ceneo.pl/{}#tab=reviews".format(product_id)
 all_opinions = []
 
 while next_page:
@@ -41,7 +41,7 @@ while next_page:
     opinions = page_dom.select("div.js_product-review")
 
     for opinion in opinions:
-        single_opinion = {key : get_feature(opinion, *value) for key,value in features.items}
+        single_opinion = {key : get_feature(opinion, *value) for key,value in features.items()}
         single_opinion["opinion_id"] = opinion["data-entry-id"]
         all_opinions.append(single_opinion)
 
@@ -52,7 +52,7 @@ while next_page:
         next_page = None 
     print(next_page)
 
-with open("opinions/{}.json".format(prduct_id), "w", encoding="UTF-8") as jf:
+with open("opinions/{}.json".format(product_id), "w", encoding="UTF-8") as jf:
     json.dump(all_opinions, jf, indent=4, ensure_ascii=False)
 
 print(json.dumps(all_opinions, indent=4, ensure_ascii=False))
