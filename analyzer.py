@@ -1,4 +1,3 @@
-from pandas._config.config import options
 from matplotlib import colors, pyplot as plt
 from os import listdir
 import pandas as pd
@@ -9,8 +8,8 @@ pd.set_option("display.max_columns", None)
 
 print(*[file_name.split(".")[0] for file_name in listdir("opinions")], sep="\n")
 
-prduct_id = input("Podaj kod produktu: ")
-opinions = pd.read_json("opinions/{}.json".format(prduct_id))
+product_id = input("Podaj kod produktu: ")
+opinions = pd.read_json("opinions/{}.json".format(product_id))
 
 
 opinions_count = opinions.opinion_id.count()
@@ -28,7 +27,8 @@ stars.plot.bar(color = "red")
 plt.title("Gwiazdki")
 plt.xlabel("Liczba gwiazdek")
 plt.ylabel("Liczba opinii")
-plt.savefig("plots/{}.png".format(prduct_id))
+plt.savefig("plots/{}.png".format(product_id))
+plt.show()
 plt.close()
 
 recomm = opinions.recomm.value_counts(dropna = False).sort_index()
